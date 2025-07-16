@@ -283,6 +283,171 @@ if miss ~= 0 then
 end]],
 		},
 	},
+	[L["Mana"]] = {
+		[L["Absolute"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_MAXMANA']=true},
+			code = [[
+local max = UnitManaMax(unit)
+if max > 0 then
+  return "%s/%s",UnitMana(unit),max
+end]],
+		},
+		[L["Absolute short"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_MAXMANA']=true},
+			code = [[
+local max = UnitManaMax(unit)
+if max > 0 then
+  return "%s/%s",Short(UnitMana(unit),true),Short(max,true)
+end]],
+		},
+		[L["Difference"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_MAXMANA']=true},
+			code = [[
+return "-%d",UnitManaMax(unit) - UnitMana(unit)]],
+		},
+		[L["Percent"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_MAXMANA']=true},
+			code = [[
+local max = UnitManaMax(unit)
+if max > 0 then
+  return "%s%%",Percent(UnitMana(unit),max)
+end]],
+		},
+		[L["Absolute and percent"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_MAXMANA']=true},
+			code = [[
+local cur,max = UnitMana(unit),UnitManaMax(unit)
+if max > 0 then
+  return "%s/%s || %s%%",cur,max,Percent(cur,max)
+end]],
+		},
+		[L["Mini"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_MAXMANA']=true},
+			code = [[
+local max = UnitManaMax(unit)
+if max > 0 then
+  return VeryShort(UnitMana(unit))
+end]],
+		},
+		[L["Smart"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_MAXMANA']=true},
+			code = [[
+local miss = UnitManaMax(unit) - UnitMana(unit)
+if miss ~= 0 then
+  return "|cff7f7fff%s|r",Short(miss,true)
+end]],
+		},
+	},
+	[L["Rage"]] = {
+		[L["Absolute"]] = {
+			events = {['UNIT_RAGE']=true,['UNIT_MAXRAGE']=true},
+			code = [[
+local max = UnitPowerMax(unit, 1)
+if max > 0 then
+  return "%s/%s",UnitPower(unit, 1),max
+end]],
+		},
+		[L["Absolute short"]] = {
+			events = {['UNIT_RAGE']=true,['UNIT_MAXRAGE']=true},
+			code = [[
+local max = UnitPowerMax(unit, 1)
+if max > 0 then
+  return "%s/%s",Short(UnitPower(unit, 1),true),Short(max,true)
+end]],
+		},
+		[L["Difference"]] = {
+			events = {['UNIT_RAGE']=true,['UNIT_MAXRAGE']=true},
+			code = [[
+return "-%d",UnitPowerMax(unit, 1) - UnitPower(unit, 1)]],
+		},
+		[L["Percent"]] = {
+			events = {['UNIT_RAGE']=true,['UNIT_MAXRAGE']=true},
+			code = [[
+local max = UnitPowerMax(unit, 1)
+if max > 0 then
+  return "%s%%",Percent(UnitPower(unit, 1),max)
+end]],
+		},
+		[L["Absolute and percent"]] = {
+			events = {['UNIT_RAGE']=true,['UNIT_MAXRAGE']=true},
+			code = [[
+local cur,max = UnitPower(unit, 1),UnitPowerMax(unit, 1)
+if max > 0 then
+  return "%s/%s || %s%%",cur,max,Percent(cur,max)
+end]],
+		},
+		[L["Mini"]] = {
+			events = {['UNIT_RAGE']=true,['UNIT_MAXRAGE']=true},
+			code = [[
+local max = UnitPowerMax(unit, 1)
+if max > 0 then
+  return VeryShort(UnitPower(unit, 1))
+end]],
+		},
+		[L["Smart"]] = {			
+			events = {['UNIT_RAGE']=true,['UNIT_MAXRAGE']=true},
+			code = [[
+local miss = UnitPowerMax(unit, 1) - UnitPower(unit, 1)
+if miss ~= 0 then
+  return "|cff7f7fff%s|r",Short(miss,true)
+end]],
+		},
+	},
+	[L["Energy"]] = {
+		[L["Absolute"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_RAGE']=true,['UNIT_FOCUS']=true,['UNIT_ENERGY']=true,['UNIT_RUNIC_POWER']=true,['UNIT_MAXMANA']=true,['UNIT_MAXRAGE']=true,['UNIT_MAXFOCUS']=true,['UNIT_MAXENERGY']=true,['UNIT_MAXRUNIC_POWER']=true,['UNIT_DISPLAYPOWER']=true},
+			code = [[
+local max = UnitPowerMax(unit, 2)
+if max > 0 then
+  return "%s/%s",UnitPower(unit, 2),max
+end]],
+		},
+		[L["Absolute short"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_RAGE']=true,['UNIT_FOCUS']=true,['UNIT_ENERGY']=true,['UNIT_RUNIC_POWER']=true,['UNIT_MAXMANA']=true,['UNIT_MAXRAGE']=true,['UNIT_MAXFOCUS']=true,['UNIT_MAXENERGY']=true,['UNIT_MAXRUNIC_POWER']=true,['UNIT_DISPLAYPOWER']=true},
+			code = [[
+local max = UnitPowerMax(unit, 2)
+if max > 0 then
+  return "%s/%s",Short(UnitPower(unit, 2),true),Short(max,true)
+end]],
+		},
+		[L["Difference"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_RAGE']=true,['UNIT_FOCUS']=true,['UNIT_ENERGY']=true,['UNIT_RUNIC_POWER']=true,['UNIT_MAXMANA']=true,['UNIT_MAXRAGE']=true,['UNIT_MAXFOCUS']=true,['UNIT_MAXENERGY']=true,['UNIT_MAXRUNIC_POWER']=true,['UNIT_DISPLAYPOWER']=true},
+			code = [[
+return "-%d",UnitPowerMax(unit, 2) - UnitPower(unit, 2)]],
+		},
+		[L["Percent"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_RAGE']=true,['UNIT_FOCUS']=true,['UNIT_ENERGY']=true,['UNIT_RUNIC_POWER']=true,['UNIT_MAXMANA']=true,['UNIT_MAXRAGE']=true,['UNIT_MAXFOCUS']=true,['UNIT_MAXENERGY']=true,['UNIT_MAXRUNIC_POWER']=true,['UNIT_DISPLAYPOWER']=true},
+			code = [[
+local max = UnitPowerMax(unit, 2)
+if max > 0 then
+  return "%s%%",Percent(UnitPower(unit, 2),max)
+end]],
+		},
+		[L["Absolute and percent"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_RAGE']=true,['UNIT_FOCUS']=true,['UNIT_ENERGY']=true,['UNIT_RUNIC_POWER']=true,['UNIT_MAXMANA']=true,['UNIT_MAXRAGE']=true,['UNIT_MAXFOCUS']=true,['UNIT_MAXENERGY']=true,['UNIT_MAXRUNIC_POWER']=true,['UNIT_DISPLAYPOWER']=true},
+			code = [[
+local cur,max = UnitPower(unit, 2),UnitPowerMax(unit, 2)
+if max > 0 then
+  return "%s/%s || %s%%",cur,max,Percent(cur,max)
+end]],
+		},
+		[L["Mini"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_RAGE']=true,['UNIT_FOCUS']=true,['UNIT_ENERGY']=true,['UNIT_RUNIC_POWER']=true,['UNIT_MAXMANA']=true,['UNIT_MAXRAGE']=true,['UNIT_MAXFOCUS']=true,['UNIT_MAXENERGY']=true,['UNIT_MAXRUNIC_POWER']=true,['UNIT_DISPLAYPOWER']=true},
+			code = [[
+local max = UnitPowerMax(unit, 2)
+if max > 0 then
+  return VeryShort(UnitPower(unit, 2))
+end]],
+		},
+		[L["Smart"]] = {
+			events = {['UNIT_MANA']=true,['UNIT_RAGE']=true,['UNIT_FOCUS']=true,['UNIT_ENERGY']=true,['UNIT_RUNIC_POWER']=true,['UNIT_MAXMANA']=true,['UNIT_MAXRAGE']=true,['UNIT_MAXFOCUS']=true,['UNIT_MAXENERGY']=true,['UNIT_MAXRUNIC_POWER']=true,['UNIT_DISPLAYPOWER']=true},
+			code = [[
+local miss = UnitPowerMax(unit, 2) - UnitPower(unit, 2)
+if miss ~= 0 then
+  return "|cff7f7fff%s|r",Short(miss,true)
+end]],
+		},
+	},
 	[L["Druid mana"]] = {
 		[L["Absolute"]] = {
 			events = {['UNIT_MANA']=true,['UNIT_MAXMANA']=true},
@@ -1092,8 +1257,8 @@ function PitBull4_LuaTexts:OnNewLayout(layout)
 	end
 	for name, data in pairs {
 		["Lua:"..L["Name"]] = {
-			code = PROVIDED_CODES[L['Name']][L['Standard']].code,
-			events = copy(PROVIDED_CODES[L['Name']][L['Standard']].events),
+			code = PROVIDED_CODES[L['Name']][L['Long']].code,
+			events = copy(PROVIDED_CODES[L['Name']][L['Long']].events),
 			attach_to = "HealthBar",
 			location = "left"
 		},
@@ -1113,6 +1278,24 @@ function PitBull4_LuaTexts:OnNewLayout(layout)
 			code = PROVIDED_CODES[L['Power']][L['Absolute']].code,
 			events = copy(PROVIDED_CODES[L['Power']][L['Absolute']].events),
 			attach_to = "PowerBar",
+			location = "right"
+		},
+		["Lua:"..L["Mana"]] = {
+			code = PROVIDED_CODES[L['Mana']][L['Absolute']].code,
+			events = copy(PROVIDED_CODES[L['Mana']][L['Absolute']].events),
+			attach_to = "ManaBar",
+			location = "right"
+		},
+		["Lua:"..L["Rage"]] = {
+			code = PROVIDED_CODES[L['Rage']][L['Absolute']].code,
+			events = copy(PROVIDED_CODES[L['Rage']][L['Absolute']].events),
+			attach_to = "RageBar",
+			location = "right"
+		},
+		["Lua:"..L["Energy"]] = {
+			code = PROVIDED_CODES[L['Energy']][L['Absolute']].code,
+			events = copy(PROVIDED_CODES[L['Energy']][L['Absolute']].events),
+			attach_to = "EnergyBar",
 			location = "right"
 		},
 		["Lua:"..L["Reputation"]] = {

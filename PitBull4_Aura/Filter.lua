@@ -50,44 +50,37 @@ end
 
 -- Setup the data for who can dispel what types of auras.
 local can_dispel = {
-	DEATHKNIGHT = {},
-	DRUID = {
-		Curse = true,
-		Poison = true,
-	},
-	HUNTER = {
-		Magic = true,
-		Enrage = true,
-	},
-	MAGE = {
-		Curse = true,
-	},
-	PALADIN = {
-		Magic = true,
-		Poison = true,
-		Disease = true,
-	},
-	PRIEST = {
-		Magic = true,
-		Disease = true,
-	},
-	ROGUE = {
-		Enrage = true,
-	},
-	SHAMAN = {
-		Poison = true,
-		Disease = true,
-		Curse = scan_for_known_talent(51886),
-	},
-	WARLOCK = {
-		Magic = true,
-	},
-	WARRIOR = {
-		Magic = true,
-	},
+	HERO = {},
 }
-can_dispel.player = can_dispel[player_class]
+can_dispel.player = {}
 PitBull4_Aura.can_dispel = can_dispel
+
+function PitBull4_Aura:SPELLS_CHANGED()
+	local purify, cleanse, cureToxins, cleanseSpirit, dispelMagic, abolishDisease, cureDisease, abolishCurse, abolishPoison, dispelCurse, poisons, tranqShot =
+		IsSpellKnown(1152), -- purify
+		IsSpellKnown(4987), -- cleanse
+		IsSpellKnown(526), -- cure toxins
+		IsSpellKnown(51886), -- cleanse spirit
+		IsSpellKnown(527), -- dispel magic
+		IsSpellKnown(552), -- abolish disease
+		IsSpellKnown(528), -- cure disease
+		IsSpellKnown(2782), -- abolish curse
+		IsSpellKnown(2893), -- abolish poison
+		IsSpellKnown(475), -- dispel curse
+		IsSpellKnown(2842) -- poisons (anesthetic poison)
+		IsSpellKnown(19801); -- tranq shot
+	PitBull4_Aura.can_dispel.player = {
+		Magic = purify or cleanse or dispelMagic,
+		Curse = cleanseSpirit or abolishCurse or dispelCurse,
+		Poison = purify or cleanse or cureToxins or cleanseSpirit or abolishPoison,
+		Disease = purify or cleanse or cleanseSpirit or abolishDisease or cureDisease,
+		Enrage = tranqShot or poisons,
+	}
+end
+
+function PitBull4_Aura:PLAYER_ENTERING_WORLD()
+	self:SPELLS_CHANGED();
+end
 
 -- Handle PLAYER_TALENT_CHANGED and CHARACTER_POINTS_CHANGED events.
 -- If the points aren't changed due to leveling, rescan the talents

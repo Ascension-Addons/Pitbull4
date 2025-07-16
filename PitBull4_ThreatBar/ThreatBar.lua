@@ -15,8 +15,9 @@ PitBull4_ThreatBar:SetModuleType("bar")
 PitBull4_ThreatBar:SetName(L["Threat bar"])
 PitBull4_ThreatBar:SetDescription(L["Show a threat bar."])
 PitBull4_ThreatBar:SetDefaults({
+	enabled = false,
 	size = 1,
-	position = 5,
+	position = 8,
 })
 
 function PitBull4_ThreatBar:OnEnable()

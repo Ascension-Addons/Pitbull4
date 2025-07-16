@@ -63,6 +63,172 @@ DogTag:AddTag("Unit", "FractionalMP", {
 	category = L["Power"]
 })
 
+DogTag:AddTag("Unit", "Mana", {
+	code = UnitMana,
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	ret = "number",
+	events = "UNIT_MANA#$unit;UNIT_MAXMANA#$unit;FastPower#$unit",
+	doc = L["Return the current mana of unit"],
+	example = ('[Mana] => "%d"'):format(UnitManaMax("player")*.632),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "MaxMana", {
+	code = UnitManaMax,
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	ret = "number",
+	events = "UNIT_MANA#$unit;UNIT_MAXMANA#$unit",
+	doc = L["Return the maximum mana of unit"],
+	example = ('[MaxMana] => "%d"'):format(UnitManaMax("player")),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "PercentMana", {
+	alias = "[Mana(unit=unit) / MaxMana(unit=unit) * 100]:Round(1)",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return the percentage mana of unit"],
+	example = '[PercentMana] => "63.2"; [PercentMana:Percent] => "63.2%"',
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "MissingMana", {
+	alias = "MaxMana(unit=unit) - Mana(unit=unit)",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return the missing mana of unit"],
+	example = ('[MissingMana] => "%d"'):format(UnitManaMax("player")*.368),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "FractionalMana", {
+	alias = "Concatenate(Mana(unit=unit), '/', MaxMana(unit=unit))",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return the current and maximum mana of unit"],
+	example = ('[FractionalMana] => "%d/%d"'):format(UnitManaMax("player")*.632, UnitManaMax("player")),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "Rage", {
+	code = UnitPower,
+	arg = {
+		'unit', 'string;undef', 'player',
+		'type', 'number;undef', 1
+	},
+	ret = "number",
+	events = "UNIT_RAGE#$unit;UNIT_MAXRAGE#$unit;FastPower#$unit",
+	doc = L["Return the current rage of unit"],
+	example = ('[Rage] => "%d"'):format(UnitPowerMax("player", 1)*.632),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "MaxRage", {
+	code = UnitPowerMax,
+	arg = {
+		'unit', 'string;undef', 'player',
+		'type', 'number;undef', 1
+	},
+	ret = "number",
+	events = "UNIT_RAGE#$unit;UNIT_MAXRAGE#$unit;FastPower#$unit",
+	doc = L["Return the maximum rage of unit"],
+	example = ('[MaxRage] => "%d"'):format(UnitPowerMax("player", 1)),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "PercentRage", {
+	alias = "[Rage(unit=unit) / MaxRage(unit=unit) * 100]:Round(1)",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return the percentage rage of unit"],
+	example = '[PercentRage] => "63.2"; [PercentRage:Percent] => "63.2%"',
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "MissingRage", {
+	alias = "MaxRage(unit=unit) - Rage(unit=unit)",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return the missing rage of unit"],
+	example = ('[MissingRage] => "%d"'):format(UnitPowerMax("player", 1)*.368),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "FractionalRage", {
+	alias = "Concatenate(Rage(unit=unit), '/', MaxRage(unit=unit))",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return the current and maximum rage of unit"],
+	example = ('[FractionalRage] => "%d/%d"'):format(UnitPower("player", 1)*.632, UnitPowerMax("player", 1)),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "Energy", {
+	code = UnitPower,
+	arg = {
+		'unit', 'string;undef', 'player',
+		'type', 'number;undef', 2
+	},
+	ret = "number",
+	events = "UNIT_ENERGY#$unit;UNIT_MAXENERGY#$unit;FastPower#$unit",
+	doc = L["Return the current energy of unit"],
+	example = ('[Energy] => "%d"'):format(UnitPowerMax("player", 2)*.632),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "MaxEnergy", {
+	code = UnitPowerMax,
+	arg = {
+		'unit', 'string;undef', 'player',
+		'type', 'number;undef', 2
+	},
+	ret = "number",
+	events = "UNIT_ENERGY#$unit;UNIT_MAXENERGY#$unit;FastPower#$unit",
+	doc = L["Return the maximum energy of unit"],
+	example = ('[MaxEnergy] => "%d"'):format(UnitPowerMax("player", 2)),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "PercentEnergy", {
+	alias = "[Energy(unit=unit) / MaxEnergy(unit=unit) * 100]:Round(1)",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return the percentage energy of unit"],
+	example = '[PercentEnergy] => "63.2"; [PercentEnergy:Percent] => "63.2%"',
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "MissingEnergy", {
+	alias = "MaxEnergy(unit=unit) - Energy(unit=unit)",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return the missing energy of unit"],
+	example = ('[MissingEnergy] => "%d"'):format(UnitPowerMax("player", 2)*.368),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "FractionalEnergy", {
+	alias = "Concatenate(Energy(unit=unit), '/', MaxEnergy(unit=unit))",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return the current and maximum mana/rage/energy of unit"],
+	example = ('[FractionalEnergy] => "%d/%d"'):format(UnitPower("player", 1)*.632, UnitPowerMax("player", 2)),
+	category = L["Power"]
+})
+
 DogTag:AddTag("Unit", "TypePower", {
 	code = function(unit)
 		local p = UnitPowerType(unit)
@@ -170,6 +336,66 @@ DogTag:AddTag("Unit", "HasMP", {
 	},
 	doc = L["Return True if unit has any power type at all"],
 	example = ('[HasMP] => %q; [HasMP] => ""'):format(L["True"]),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "IsMaxMana", {
+	alias = "Boolean(Mana(unit=unit) = MaxMana(unit=unit))",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return True if unit is at full mana"],
+	example = ('[IsMaxMana] => %q; [IsMaxMana] => ""'):format(L["True"]),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "HasMana", {
+	alias = "Boolean(MaxMana(unit=unit) > 0)",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return True if unit has any mana at all"],
+	example = ('[HasMana] => %q; [HasMana] => ""'):format(L["True"]),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "IsMaxRage", {
+	alias = "Boolean(Rage(unit=unit) = MaxRage(unit=unit))",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return True if unit is at full rage"],
+	example = ('[IsMaxRage] => %q; [IsMaxRage] => ""'):format(L["True"]),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "HasRage", {
+	alias = "Boolean(MaxRage(unit=unit) > 0)",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return True if unit has rage at all"],
+	example = ('[HasRage] => %q; [HasRage] => ""'):format(L["True"]),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "IsMaxEnergy", {
+	alias = "Boolean(Energy(unit=unit) = MaxEnergy(unit=unit))",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return True if unit is at full energy"],
+	example = ('[IsMaxEnergy] => %q; [IsMaxEnergy] => ""'):format(L["True"]),
+	category = L["Power"]
+})
+
+DogTag:AddTag("Unit", "HasEnergy", {
+	alias = "Boolean(MaxEnergy(unit=unit) > 0)",
+	arg = {
+		'unit', 'string;undef', 'player'
+	},
+	doc = L["Return True if unit has energy at all"],
+	example = ('[HasEnergy] => %q; [HasEnergy] => ""'):format(L["True"]),
 	category = L["Power"]
 })
 
