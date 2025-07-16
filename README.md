@@ -1,3 +1,3 @@
-# Addon Name
+# Pitbull4
 
-This is the repository for <Addon Name>. Modified for Ascension.gg. 
+This is the repository for Pitbull4. Modified for Ascension.gg. 
