@@ -15,6 +15,7 @@
 <Include file="Modules\ComboPoints\load.xml"/>
 <Include file="Modules\DogTagTexts\load.xml"/>
 <Include file="Modules\DruidManaBar\load.xml"/>
+<Include file="Modules\EnergyBar\load.xml"/>
 <Include file="Modules\ExperienceBar\load.xml"/>
 <Include file="Modules\HappinessIcon\load.xml"/>
 <Include file="Modules\HealthBar\load.xml"/>
@@ -29,6 +30,7 @@
 <Include file="Modules\Portrait\load.xml"/>
 <Include file="Modules\PowerBar\load.xml"/>
 <Include file="Modules\PvPIcon\load.xml"/>
+<Include file="Modules\RageBar\load.xml"/>
 <Include file="Modules\RaidTargetIcon\load.xml"/>
 <Include file="Modules\RangeFader\load.xml"/>
 <Include file="Modules\ReadyCheckIcon\load.xml"/>
