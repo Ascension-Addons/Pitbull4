@@ -17,7 +17,7 @@ PitBull4_HealthBar:SetName(L["Health bar"])
 PitBull4_HealthBar:SetDescription(L["Show a bar indicating the unit's health."])
 PitBull4_HealthBar.allow_animations = true
 PitBull4_HealthBar:SetDefaults({
-	position = 1,
+	position = 2,
 	color_by_class = true,
 	hostility_color = true,
 	hostility_color_npcs = true

@@ -37,7 +37,7 @@ function PitBull4_ManaSpark:OnEnable()
 	self:RegisterEvent("UNIT_MANA")
 	self:RegisterEvent("UNIT_DISPLAYPOWER")
 	
-	current_mana = UnitPower("player", MANA_TYPE)
+	current_mana = UnitMana("player")
 end
 
 function PitBull4_ManaSpark:OnDisable()
@@ -51,13 +51,13 @@ function PitBull4_ManaSpark:UpdateFrame(frame)
 	
 	local bar = frame.DruidManaBar
 	if not bar then
-		bar = frame.PowerBar
-		if not bar or UnitPowerType("player") ~= MANA_TYPE then
+		bar = frame.ManaBar
+		if not bar then
 			return self:ClearFrame(frame)
 		end
 	end
 	
-	if UnitPower("player", MANA_TYPE) == UnitPowerMax("player", MANA_TYPE) then
+	if UnitMana("player") == UnitManaMax("player") then
 		return self:ClearFrame(frame)
 	end
 	
@@ -126,7 +126,7 @@ function PitBull4_ManaSpark:UNIT_MANA(event, unit)
 	if unit ~= 'player' then
 		return
 	end
-	local new_mana = UnitPower('player', MANA_TYPE)
+	local new_mana = UnitMana('player')
 	if new_mana < current_mana and GetTime() - last_spellcast < 0.5 then
 		spellcast_finish_time = last_spellcast
 		last_spellcast = 0

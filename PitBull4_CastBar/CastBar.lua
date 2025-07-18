@@ -16,12 +16,13 @@ PitBull4_CastBar:SetModuleType("bar")
 PitBull4_CastBar:SetName(L["Cast bar"])
 PitBull4_CastBar:SetDescription(L["Show a cast bar."])
 PitBull4_CastBar:SetDefaults({
+	enabled = false,
 	size = 1,
-	position = 10,
+	position = 1,
 	show_icon = true,
 	auto_hide = false,
 	idle_background = false,
-},{
+}, {
 	casting_interruptible_color   = { 1, 0.7, 0 },
 	casting_uninterruptible_color = { 1, 222/255, 144/255},
 	casting_complete_color = { 0, 1, 0 },

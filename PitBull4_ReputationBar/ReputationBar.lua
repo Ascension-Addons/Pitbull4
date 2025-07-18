@@ -15,8 +15,9 @@ PitBull4_ReputationBar:SetModuleType("bar")
 PitBull4_ReputationBar:SetName(L["Reputation bar"])
 PitBull4_ReputationBar:SetDescription(L["Show a reputation bar."])
 PitBull4_ReputationBar:SetDefaults({
+	enabled = false,
 	size = 1,
-	position = 3,
+	position = 7,
 })
 
 function PitBull4_ReputationBar:GetValue(frame)
