@@ -18,6 +18,7 @@ PitBull4_PowerBar:SetName(L["Power bar"])
 PitBull4_PowerBar:SetDescription(L["Show a mana, rage, energy, or runic power bar."])
 PitBull4_PowerBar.allow_animations = true
 PitBull4_PowerBar:SetDefaults({
+	enabled = false,
 	position = 2,
 	hide_no_mana = false,
 	hide_no_power = false,

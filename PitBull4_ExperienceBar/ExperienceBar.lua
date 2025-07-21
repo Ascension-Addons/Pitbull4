@@ -15,6 +15,7 @@ PitBull4_ExperienceBar:SetModuleType("bar")
 PitBull4_ExperienceBar:SetName(L["Experience bar"])
 PitBull4_ExperienceBar:SetDescription(L["Show an experience bar."])
 PitBull4_ExperienceBar:SetDefaults({
+	enabled = false,
 	size = 1,
 	position = 4,
 })
